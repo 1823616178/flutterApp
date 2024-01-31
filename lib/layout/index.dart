@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../model/GlobalKeyGather.dart';
+import 'package:test1/model/AppModel.dart';
 import 'header/Header.dart';
 
 class LayoutIndex extends StatefulWidget {
@@ -16,7 +16,9 @@ class _StatefulWidget extends State<LayoutIndex> {
     return MaterialApp(
         title: "hello world",
         theme: ThemeData(backgroundColor: Colors.amber),
-        home: LayoutHeader()
-    );
+        home: ChangeNotifierProvider<AppModel>(
+          create: (appContext) => AppModel(),
+          child: LayoutHeader(),
+        ));
   }
 }
