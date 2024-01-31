@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:test1/layout/index.dart';
 import 'dart:io';
 import 'package:provider/provider.dart';
+import 'package:test1/pages/Home/Home.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,10 +17,9 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return RestartWidget(child: LayoutIndex());
+    return RestartWidget(child: LayoutIndex(Home()));
   }
 }
 
