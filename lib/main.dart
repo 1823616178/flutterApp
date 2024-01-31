@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:test1/layout/index.dart';
 import 'dart:io';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
   if (Platform.isAndroid) {
     SystemUiOverlayStyle systemUiOverlayStyle =
         const SystemUiOverlayStyle(statusBarColor: Colors.transparent);
@@ -13,7 +14,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -21,6 +22,8 @@ class MyApp extends StatelessWidget {
     return RestartWidget(child: LayoutIndex());
   }
 }
+
+class CardModel extends ChangeNotifier {}
 
 class RestartWidget extends StatefulWidget {
   final Widget child;

@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_color/flutter_color.dart';
 
-class AppBarViewsLayout extends StatelessWidget {
+class AppBarViewsLayout extends StatefulWidget {
   const AppBarViewsLayout({super.key});
 
+  @override
+  State<AppBarViewsLayout> createState() => _AppBarViewsLayoutState();
+}
+
+class _AppBarViewsLayoutState extends State<AppBarViewsLayout> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -12,8 +18,8 @@ class AppBarViewsLayout extends StatelessWidget {
       actions: [
         IconButton(onPressed: () => {}, icon: const Icon(Icons.search))
       ],
-      titleTextStyle: const TextStyle(color: Colors.amber, fontSize: 50),
-      title: const Text("12312"),
+      titleTextStyle: TextStyle(color: HexColor("#FFFFFF"), fontSize: 24),
+      title: const Text("首页"),
       backgroundColor: Colors.blue,
       centerTitle: true,
     );

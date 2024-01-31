@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../model/GlobalKeyGather.dart';
 import 'header/Header.dart';
 
 class LayoutIndex extends StatefulWidget {
-  const LayoutIndex({super.key});
+  LayoutIndex({super.key});
 
   @override
   _StatefulWidget createState() => _StatefulWidget();
 }
-
 
 class _StatefulWidget extends State<LayoutIndex> {
   @override
