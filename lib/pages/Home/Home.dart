@@ -18,10 +18,7 @@ class _home extends State<Home> {
       color: HexColor("#0099ff"),
       textColor: Colors.white,
       onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Detail()),
-        );
+       
       },
     );
   }

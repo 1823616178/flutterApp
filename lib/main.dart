@@ -5,6 +5,8 @@ import 'dart:io';
 import 'package:provider/provider.dart';
 import 'package:test1/pages/Home/Home.dart';
 
+import 'containerLayout/container_page.dart';
+
 void main() {
   runApp(MyApp());
   if (Platform.isAndroid) {
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RestartWidget(child: LayoutIndex(Home()));
+    return RestartWidget(child: LayoutIndex(ContainerPage()));
   }
 }
 
