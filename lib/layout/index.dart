@@ -4,9 +4,8 @@ import 'package:test1/model/AppModel.dart';
 import 'header/Header.dart';
 
 class LayoutIndex extends StatefulWidget {
-  final Widget body;
 
-  LayoutIndex(this.body, {super.key});
+  LayoutIndex({super.key});
 
   @override
   _StatefulWidget createState() => _StatefulWidget();
@@ -20,7 +19,8 @@ class _StatefulWidget extends State<LayoutIndex> {
         theme: ThemeData(backgroundColor: Colors.amber),
         home: ChangeNotifierProvider<AppModel>(
           create: (appContext) => AppModel(),
-          child: LayoutHeader(widget.body),
-        ));
+          child: LayoutHeader(),
+        ),
+    );
   }
 }

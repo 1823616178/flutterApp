@@ -11,11 +11,10 @@ class _Detail extends State<Detail> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: LayoutIndex(
-      Text(
+      child: Text(
         "Two",
         textDirection: TextDirection.ltr,
       ),
-    ));
+    );
   }
 }
