@@ -24,8 +24,9 @@ class HttpRequest {
   }
 
   static const defaultHeader = {
-    'Accept': 'application/json',
+    'Content-Type': 'application/json',
     "charset": "UTF-8",
+    "token": "",
     'Accept-Encoding': 'gzip, deflate, br',
     'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8'
   };
@@ -65,8 +66,8 @@ class HttpRequest {
   Future<dynamic> post(
     String uri, {
     Map<String, String>? headers,
-    dynamic queryParameters,
-    dynamic body,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? body,
   }) async {
     try {
       var path = Uri(
@@ -75,8 +76,8 @@ class HttpRequest {
           port: port,
           path: uri,
           queryParameters: queryParameters);
-      http.Response response = await http
-          .post(path, body: body, headers: {...defaultHeader, ...?headers});
+      http.Response response = await http.post(path,
+          body: jsonEncode(body), headers: {...defaultHeader, ...?headers});
       final statusCode = response.statusCode;
       final responseBody = Convert.utf8.decode(response.bodyBytes);
       var result = Convert.jsonDecode(responseBody);

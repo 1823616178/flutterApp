@@ -6,11 +6,20 @@ class Api {
 
   var _request = HttpRequest(Api.BASE_URL, PORT);
   static const getBookCategoryUri = "/api2/bookApi/getBookCategory";
+  static const selectBookPropertiesListUri =
+      "/api2/bookApi/selectBookPropertiesList";
 
-  void advancedRetrievalParams(
-      Map<String, dynamic> query, RequestCallBack requestCallBack) async {
+  /// 请求侧列表导航数据
+  Future<Map<dynamic, dynamic>> advancedRetrievalParams(query) async {
     final Map result =
         await _request.post(getBookCategoryUri, queryParameters: query);
-    requestCallBack(result);
+    return result;
+  }
+
+  ///获取图书资源
+  Future<Map<dynamic, dynamic>> selectBookPropertiesList(body) async {
+    final Map result =
+        await _request.post(selectBookPropertiesListUri, body: body);
+    return result;
   }
 }
