@@ -17,6 +17,14 @@ class LayoutHeader extends StatefulWidget {
 class _LayoutHeader extends State<LayoutHeader> {
   @override
   Widget build(BuildContext context) {
+    List<Map<String, Map<String, Widget>>> routerParams = [
+      {
+        "home": {"view": Home()}
+      },
+      {
+        "detail": {"view": Detail()}
+      }
+    ];
     void changeNavbarIndex(int value) {
       setState(() {
         Provider.of<AppModel>(context, listen: false).navbarIndex = value;
@@ -41,13 +49,14 @@ class _LayoutHeader extends State<LayoutHeader> {
             onTap: (int index) => {changeNavbarIndex(index)},
             items: [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
+                  icon: const Icon(Icons.home),
                   tooltip: "这是什么？",
                   label: "home",
                   backgroundColor: HexColor("#0099ff")),
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                   icon: Icon(Icons.details), label: "detail"),
-              BottomNavigationBarItem(icon: Icon(Icons.school), label: "list"),
+              const BottomNavigationBarItem(
+                  icon: Icon(Icons.school), label: "list"),
             ],
           );
         },

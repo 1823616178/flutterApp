@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_color/flutter_color.dart';
 import 'package:test1/api/home.dart';
 
 final _api = Api();
@@ -110,74 +111,84 @@ class _home extends State<Home> with SingleTickerProviderStateMixin {
                         ));
                   }
                   return Container(
-                      width: width,
-                      constraints: BoxConstraints(maxWidth: width),
-                      margin: const EdgeInsets.only(bottom: 20),
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: GestureDetector(
-                          onTap: () => clickItem(index),
-                          child: Row(
-                            verticalDirection: VerticalDirection.up,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Image.network(
-                                "http://${Api.BASE_URL}:${Api.PORT}/img/${bookList[index]['filePath']}",
-                                fit: BoxFit.contain,
-                                errorBuilder: (
-                                  BuildContext context,
-                                  Object error,
-                                  StackTrace? stackTrace,
-                                ) {
-                                  return Image.asset(
-                                    defaultImage.assetName,
-                                    fit: BoxFit.contain,
-                                    height: 150,
-                                    width: 100,
-                                  );
-                                },
-                                height: 150,
-                                width: 100,
+                    width: width,
+                    constraints: BoxConstraints(maxWidth: width),
+                    margin: const EdgeInsets.only(bottom: 5),
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: GestureDetector(
+                      onTap: () => clickItem(index),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: HexColor("#eee"),
+                          border: Border(
+                              bottom:
+                                  BorderSide(color: Colors.black, width: 1)),
+                        ),
+                        child: Row(
+                          verticalDirection: VerticalDirection.up,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Image.network(
+                              "http://${Api.BASE_URL}:${Api.PORT}/img/${bookList[index]['filePath']}",
+                              fit: BoxFit.contain,
+                              errorBuilder: (
+                                BuildContext context,
+                                Object error,
+                                StackTrace? stackTrace,
+                              ) {
+                                return Image.asset(
+                                  defaultImage.assetName,
+                                  fit: BoxFit.contain,
+                                  height: 150,
+                                  width: 100,
+                                );
+                              },
+                              height: 150,
+                              width: 100,
+                            ),
+                            Expanded(
+                                child: Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                verticalDirection: VerticalDirection.down,
+                                children: [
+                                  Text(
+                                    bookList[index]['title'] +
+                                        bookList[index]["collectionPlace"],
+                                    textAlign: TextAlign.start,
+                                    overflow: TextOverflow.ellipsis,
+                                    textDirection: TextDirection.ltr,
+                                    textWidthBasis: TextWidthBasis.parent,
+                                    maxLines: 1,
+                                    style: const TextStyle(fontSize: 24),
+                                  ),
+                                  Text(
+                                    bookList[index]['title'] +
+                                        bookList[index]["collectionPlace"],
+                                    overflow: TextOverflow.ellipsis,
+                                    softWrap: true,
+                                    maxLines: 2,
+                                    textWidthBasis: TextWidthBasis.parent,
+                                    textDirection: TextDirection.ltr,
+                                  ),
+                                  Text(
+                                    bookList[index]["collectionPlace"],
+                                    overflow: TextOverflow.ellipsis,
+                                    softWrap: true,
+                                    maxLines: 2,
+                                    textWidthBasis: TextWidthBasis.parent,
+                                    textDirection: TextDirection.ltr,
+                                  ),
+                                ],
                               ),
-                              Expanded(
-                                  child: Padding(
-                                padding: EdgeInsets.only(top: 10),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  verticalDirection: VerticalDirection.down,
-                                  children: [
-                                    Text(
-                                      bookList[index]['title'] +
-                                          bookList[index]["collectionPlace"],
-                                      textAlign: TextAlign.start,
-                                      overflow: TextOverflow.ellipsis,
-                                      textDirection: TextDirection.ltr,
-                                      textWidthBasis: TextWidthBasis.parent,
-                                      maxLines: 1,
-                                      style: const TextStyle(fontSize: 24),
-                                    ),
-                                    Text(
-                                      bookList[index]['title'] +
-                                          bookList[index]["collectionPlace"],
-                                      overflow: TextOverflow.ellipsis,
-                                      softWrap: true,
-                                      maxLines: 2,
-                                      textWidthBasis: TextWidthBasis.parent,
-                                      textDirection: TextDirection.ltr,
-                                    ),
-                                    Text(
-                                      bookList[index]["collectionPlace"],
-                                      overflow: TextOverflow.ellipsis,
-                                      softWrap: true,
-                                      maxLines: 2,
-                                      textWidthBasis: TextWidthBasis.parent,
-                                      textDirection: TextDirection.ltr,
-                                    ),
-                                  ],
-                                ),
-                              ))
-                            ],
-                          )));
+                            ))
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
                 },
                 controller: _scrollController,
               );
