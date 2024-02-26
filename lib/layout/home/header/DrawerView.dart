@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../model/AppModel.dart';
+import '../../../model/AppModel.dart';
+
 
 class LayoutDrawerView extends StatelessWidget {
   const LayoutDrawerView({super.key});

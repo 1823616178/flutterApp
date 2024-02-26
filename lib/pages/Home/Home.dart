@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_color/flutter_color.dart';
 import 'package:test1/api/home.dart';
+import 'package:test1/pages/Detail/detail.dart';
 
 final _api = Api();
 
@@ -70,8 +71,8 @@ class _home extends State<Home> with SingleTickerProviderStateMixin {
 
   void clickItem(index) {
     final item = bookList[index];
-
-    showDialog(
+    Navigator.pushNamed(context, "/detail", arguments: {});
+    /*showDialog(
         context: context,
         builder: (BuildContext context) {
           return PreferredSize(
@@ -88,13 +89,12 @@ class _home extends State<Home> with SingleTickerProviderStateMixin {
               ),
             ),
           );
-        });
+        });*/
   }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width - 300;
-    print(width);
     return bookList.isNotEmpty
         ? AnimatedBuilder(
             animation: _animationController,

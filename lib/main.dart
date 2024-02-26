@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:test1/layout/index.dart';
+import 'package:test1/layout/home/index.dart';
 import 'dart:io';
+
+import 'package:test1/pages/Detail/detail.dart';
+
 void main() {
   runApp(MyApp());
   if (Platform.isAndroid) {
@@ -11,12 +14,33 @@ void main() {
   }
 }
 
-class MyApp extends StatelessWidget {
+final routes = [];
+
+class MyApp extends StatefulWidget {
   MyApp({super.key});
 
   @override
+  _MyApp createState() => _MyApp();
+}
+
+class _MyApp extends State<MyApp> {
+  @override
   Widget build(BuildContext context) {
-    return RestartWidget(child: LayoutIndex());
+    return MaterialApp(
+      initialRoute: "/",
+      routes: {
+        "/": (context) => RestartWidget(child: LayoutIndex()),
+        "/detail": (context) => Detail()
+      },
+      onGenerateInitialRoutes: (settings) {
+        print(settings);
+        return [
+          MaterialPageRoute(
+              builder: (context) => RestartWidget(child: LayoutIndex()),
+              settings: RouteSettings(name: "/")),
+        ];
+      },
+    );
   }
 }
 
