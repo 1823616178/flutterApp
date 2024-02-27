@@ -26,7 +26,7 @@ class HttpRequest {
   static const defaultHeader = {
     'Content-Type': 'application/json',
     "charset": "UTF-8",
-    "token": "",
+    "Token": "eyJUeXBlIjoiSnd0IiwidHlwIjoiSldUIiwiYWxnIjoiSFMyNTYifQ.eyJ1c2VyY0lkIjoiMjIiLCJleHAiOjE3MTAzMDUyMjUsImVtYWlsIjoiIiwidXNlcm5hbWUiOiJseDE4MjM2MTYxNzgifQ.O3sS_9mlkInbV7BTQsO3D5pjVJc9bj9YGD3IGPEeGgg",
     'Accept-Encoding': 'gzip, deflate, br',
     'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8'
   };
