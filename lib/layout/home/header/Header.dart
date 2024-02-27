@@ -31,7 +31,11 @@ class _LayoutHeader extends State<LayoutHeader> {
       ),
       body: Consumer<AppModel>(
         builder: (BuildContext context, AppModel value, Widget? child) {
-          return value.navbarIndex == 1 ? Home() : Detail();
+          return value.navbarIndex == 1
+              ? Home()
+              : Detail(
+                  sourceId: "",
+                );
         },
       ),
       bottomNavigationBar: Consumer<AppModel>(

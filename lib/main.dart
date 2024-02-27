@@ -14,7 +14,11 @@ void main() {
   }
 }
 
-final routes = [];
+class ScreenArguments {
+  String sourceId = '';
+
+  ScreenArguments(this.sourceId);
+}
 
 class MyApp extends StatefulWidget {
   MyApp({super.key});
@@ -30,15 +34,16 @@ class _MyApp extends State<MyApp> {
       initialRoute: "/",
       routes: {
         "/": (context) => RestartWidget(child: LayoutIndex()),
-        "/detail": (context) => Detail()
       },
-      onGenerateInitialRoutes: (settings) {
-        print(settings);
-        return [
-          MaterialPageRoute(
-              builder: (context) => RestartWidget(child: LayoutIndex()),
-              settings: RouteSettings(name: "/")),
-        ];
+      onGenerateRoute: (settings) {
+        if (settings.name == '/detail') {
+          final args = settings.arguments;
+          return MaterialPageRoute(builder: (context) {
+            return Detail(
+                sourceId: (args as Map<String, dynamic>)['sourceId'] as String);
+          });
+        }
+        return null;
       },
     );
   }

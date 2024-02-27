@@ -14,7 +14,9 @@ class _DetailArticle extends State<DetailArticle> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(10.0),
-      child: Text(""),
+      child: Text(widget.contentObj.containsKey('content')
+          ? widget.contentObj['content']
+          : ''),
     );
   }
 }

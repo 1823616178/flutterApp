@@ -8,7 +8,12 @@ import 'package:test1/pages/Detail/compose/DetailArticle.dart';
 import 'package:test1/pages/Detail/compose/detailDrawer.dart';
 
 class Detail extends StatefulWidget {
-  const Detail({super.key});
+  final String sourceId;
+
+  final String identifier = "";
+  final String volume = "";
+
+  const Detail({required this.sourceId, super.key});
 
   @override
   _Detail createState() => _Detail();
@@ -18,8 +23,18 @@ class _Detail extends State<Detail> {
   late Map contentObject = {};
   final _api = Api();
 
+  @override
+  void initState() {
+    super.initState();
+    getContent();
+  }
+
   Future<void> getContent() async {
-    final query = {};
+    final query = {
+      "sourceId": widget.sourceId ?? '',
+      "identifier": "06jh008390PZ00001",
+      "volume": '001'
+    };
     final result = await _api.selectBookContentTextInfo(query);
     setState(() {
       contentObject = result.containsKey('data') ? result['data'] : [];

@@ -71,7 +71,9 @@ class _home extends State<Home> with SingleTickerProviderStateMixin {
 
   void clickItem(index) {
     final item = bookList[index];
-    Navigator.pushNamed(context, "/detail", arguments: {});
+    Navigator.pushNamed(context, "/detail", arguments: {
+      "sourceId": item['sourceId'],
+    });
     /*showDialog(
         context: context,
         builder: (BuildContext context) {
